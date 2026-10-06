@@ -1,0 +1,113 @@
+<header class="fixed inset-x-0 top-0 z-50 w-full border-b border-[#e8eef5] bg-white">
+  <div class="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between px-[15px] sm:px-5 min-[900px]:h-[82px] min-[900px]:px-8">
+
+    <!-- Logo -->
+    <a routerLink="/" class="flex items-center gap-[11px] text-[#103b69] no-underline" (click)="closeMobileMenu()">
+      <div class="flex h-[38px] w-[38px] items-center justify-center text-[#0878d1] sm:h-11 sm:w-11">
+        <svg class="h-full w-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 4L42 12V22C42 33.5 34.5 42 24 45C13.5 42 6 33.5 6 22V12L24 4Z" fill="currentColor" opacity=".12" />
+          <path d="M24 7L39 14V22C39 31.5 33 39 24 42C15 39 9 31.5 9 22V14L24 7Z" stroke="currentColor" stroke-width="2.5" />
+          <path d="M16 22L21 27L32 16" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+
+      <div class="flex flex-col leading-none">
+        <span class="text-[18px] font-bold tracking-[-0.5px] sm:text-[21px]">
+          CBE <strong class="text-[#0878d1]">Pathways</strong>
+        </span>
+        <span class="mt-[5px] text-[7px] font-semibold tracking-[0.8px] text-[#718096] sm:text-[9px]">
+          Competency-Based Education
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav class="ml-auto mr-[55px] hidden items-center gap-[38px] min-[900px]:flex">
+      <a
+        routerLink="/"
+        routerLinkActive="text-[#0878d1] after:absolute after:inset-x-0 after:bottom-[17px] after:h-[2px] after:rounded-full after:bg-[#0878d1]"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="relative py-[30px] text-[15px] font-semibold text-[#193b60] no-underline transition-colors duration-200 hover:text-[#0878d1]"
+      >Home</a>
+
+      <a
+        routerLink="/about"
+        routerLinkActive="text-[#0878d1] after:absolute after:inset-x-0 after:bottom-[17px] after:h-[2px] after:rounded-full after:bg-[#0878d1]"
+        class="relative py-[30px] text-[15px] font-semibold text-[#193b60] no-underline transition-colors duration-200 hover:text-[#0878d1]"
+      >About Us</a>
+
+      <a
+        routerLink="/services"
+        routerLinkActive="text-[#0878d1] after:absolute after:inset-x-0 after:bottom-[17px] after:h-[2px] after:rounded-full after:bg-[#0878d1]"
+        class="relative py-[30px] text-[15px] font-semibold text-[#193b60] no-underline transition-colors duration-200 hover:text-[#0878d1]"
+      >Services</a>
+    </nav>
+
+    <!-- Desktop actions -->
+    <div class="hidden items-center gap-3 min-[900px]:flex">
+      <a
+        routerLink="/login"
+        class="inline-flex h-[46px] items-center justify-center rounded-[9px] border-[1.5px] border-[#0878d1] bg-white px-6 text-[14px] font-bold text-[#0878d1] no-underline transition hover:-translate-y-px hover:bg-[#f0f8ff]"
+      >Login</a>
+
+      <a
+        routerLink="/register"
+        class="inline-flex h-[46px] items-center justify-center rounded-[9px] border-[1.5px] border-[#0878d1] bg-[#0878d1] px-6 text-[14px] font-bold text-white no-underline transition hover:-translate-y-px hover:bg-[#066bbd] hover:shadow-[0_7px_18px_rgba(8,120,209,0.2)]"
+      >Sign Up</a>
+    </div>
+
+    <!-- Mobile menu button -->
+    <button
+      type="button"
+      class="block h-[42px] w-[42px] cursor-pointer rounded-lg border-0 bg-[#f2f7fc] p-[9px] min-[900px]:hidden"
+      (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="mobileMenuOpen"
+      aria-label="Toggle navigation"
+    >
+      <span class="my-[5px] block h-[2px] rounded-full bg-[#103b69]"></span>
+      <span class="my-[5px] block h-[2px] rounded-full bg-[#103b69]"></span>
+      <span class="my-[5px] block h-[2px] rounded-full bg-[#103b69]"></span>
+    </button>
+  </div>
+
+  <!-- Mobile navigation -->
+  @if (mobileMenuOpen) {
+    <div class="max-h-[calc(100vh-72px)] overflow-y-auto border-t border-[#edf2f7] bg-white px-5 pb-6 pt-[10px] min-[900px]:hidden">
+      <a
+        routerLink="/"
+        routerLinkActive="!text-[#0878d1]"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMobileMenu()"
+        class="block border-b border-[#edf2f7] px-1 py-[14px] text-[15px] font-semibold text-[#193b60] no-underline"
+      >Home</a>
+
+      <a
+        routerLink="/about"
+        routerLinkActive="!text-[#0878d1]"
+        (click)="closeMobileMenu()"
+        class="block border-b border-[#edf2f7] px-1 py-[14px] text-[15px] font-semibold text-[#193b60] no-underline"
+      >About Us</a>
+
+      <a
+        routerLink="/services"
+        routerLinkActive="!text-[#0878d1]"
+        (click)="closeMobileMenu()"
+        class="block border-b border-[#edf2f7] px-1 py-[14px] text-[15px] font-semibold text-[#193b60] no-underline"
+      >Services</a>
+
+      <div class="mt-[18px] flex gap-[10px]">
+        <a
+          routerLink="/login"
+          (click)="closeMobileMenu()"
+          class="flex-1 rounded-lg border border-[#0878d1] p-[13px] text-center text-[14px] font-bold text-[#0878d1] no-underline"
+        >Login</a>
+
+        <a
+          routerLink="/register"
+          (click)="closeMobileMenu()"
+          class="flex-1 rounded-lg bg-[#0878d1] p-[13px] text-center text-[14px] font-bold text-white no-underline"
+        >Sign Up</a>
+      </div>
+    </div>
+  }
+</header>
